@@ -134,3 +134,19 @@ conda search <package_name>
 ```bash
 conda create --name <python_env_name> python=3.9
 ```
+
+## Sharing Environment
+
+When working on a project, you might collaborate with other Data scientists and they might need similar environment set up on their end. For this, you could share all your packages with your code or alternatively, you could just provide them information about the packages they need to install. The second is possible using environment configuration file. 
+
+1. Export your active environment into a file.
+
+```bash
+conda env export > my_env.yml
+```
+
+Once the other developer has this environment configuration file, they can set up their environment using this configuration file.
+
+```bash
+conda env create -n <new_env_name> --file my_env.yml
+```
