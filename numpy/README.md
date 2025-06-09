@@ -7,6 +7,7 @@ These are set of tutorials to learn the basics of Numpy. This is just enough to 
 
 - [Introduction to Numpy](introduction/index.md)
 - [Creating Numpy Arrays](creating-arrays/index.md)
+- [Numpy Array Attributes](array-attributes/index.md)
 - [Numpy Array Indexing](array-indexing/index.md)
 - [Numpy Array Slicing](array-slicing/index.md)
 - [Numpy Data Types](data-types/index.md)
