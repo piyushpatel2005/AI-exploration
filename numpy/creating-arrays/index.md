@@ -28,6 +28,14 @@ a
 array([1, 2, 3])
 ```
 
+Internally, Numpy stores the data in ndarray format which is not exactly Python list. It's lot more concise and memory-efficient storage.
+
+You can also create numpy array of other types using the same syntax.
+
+```python
+float_arr = np.array([.1, .2, .3])
+```
+
 If you check the type of this array `a`, you will notice that it's a `numpy.ndarray` type.
 
 ```python
