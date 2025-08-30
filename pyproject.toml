@@ -1,0 +1,9 @@
+[project]
+name = "ai-exploration"
+version = "1.0.0"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "torch @ git+https://github.com/pytorch/pytorch.git",
+]
