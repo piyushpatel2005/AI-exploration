@@ -1,9 +1,29 @@
 [project]
 name = "ai-exploration"
+description = "AI Exploration environment for notebooks"
+readme = "README.md"
 version = "1.0.0"
+requires-python = ">=3.12"
 dependencies = [
     "numpy",
     "pandas",
     "scikit-learn",
-    "torch @ git+https://github.com/pytorch/pytorch.git",
+#    "torch",
+    "ipykernel",
+    "ruff",
+    "jupyterlab",
+    "notebook"
 ]
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py312"
+extend-include = ["*.ipynb"]
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

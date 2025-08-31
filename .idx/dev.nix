@@ -12,9 +12,14 @@
   packages = [
     pkgs.gcc
     pkgs.python312
-    pkgs.python312Packages.pip
     pkgs.openssh
     pkgs.uv
+    pkgs.python312Packages.pip
+    pkgs.python312Packages.ipykernel
+    pkgs.python312Packages.numpy
+    pkgs.python312Packages.pandas
+    pkgs.python312Packages.scikit-learn
+    pkgs.python312Packages.pytorch
   ];
   #
   # define environment variables
@@ -40,10 +45,14 @@
     ];
     workspace = {
       onCreate = {
-        uv-sync = ''
-        export CC=gcc
-        uv sync
+        init = ''
+          export CC=gcc
+          uv sync
+          python -m ipykernel install --user --name=ai-exploration --display-name="Python (ai-exploration)"
         '';
+      };
+      onStart = {
+        uv-sync = "uv sync";
       };
     };
 
