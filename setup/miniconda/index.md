@@ -145,6 +145,12 @@ When working on a project, you might collaborate with other Data scientists and 
 conda env export > my_env.yml
 ```
 
+This export adds the `prefix` line which includes the path to the environment. This file can be shared with the other developer. It's advisable to remove this line before sharing the file. So, you can use below command to remove the line and create a new file.
+
+```bash
+cond env export | grep -v "^prefix" > my_env.yml
+```
+
 Once the other developer has this environment configuration file, they can set up their environment using this configuration file.
 
 ```bash
