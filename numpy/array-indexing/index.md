@@ -1,2 +1,0 @@
-# Numpy Array Indexing
-
