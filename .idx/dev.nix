@@ -10,16 +10,15 @@
   # https://search.nixos.org/packages
   #
   packages = [
-    pkgs.gcc
+    # pkgs.gcc
     pkgs.python312
-    pkgs.openssh
-    pkgs.uv
+    # pkgs.openssh
+    # pkgs.uv
     pkgs.python312Packages.pip
-    pkgs.python312Packages.ipykernel
-    pkgs.python312Packages.numpy
-    pkgs.python312Packages.pandas
-    pkgs.python312Packages.scikit-learn
-    pkgs.python312Packages.pytorch
+    # pkgs.python312Packages.ipykernel
+    # pkgs.python312Packages.numpy
+    # pkgs.python312Packages.pandas
+    # pkgs.python312Packages.scikit-learn
   ];
   #
   # define environment variables
@@ -35,7 +34,7 @@
   # https://open-vsx.org/
   #
 
-  services.docker.enable = true;
+  # services.docker.enable = true;
   
   idx = {
     extensions = [
@@ -44,16 +43,16 @@
       "ms-toolsai.jupyter"
     ];
     workspace = {
-      onCreate = {
-        init = ''
-          export CC=gcc
-          uv sync
-          python -m ipykernel install --user --name=ai-exploration --display-name="Python (ai-exploration)"
-        '';
-      };
-      onStart = {
-        uv-sync = "uv sync";
-      };
+      # onCreate = {
+      #   init = ''
+      #     export CC=gcc
+      #     uv sync
+      #     python -m ipykernel install --user --name=ai-exploration --display-name="Python (ai-exploration)"
+      #   '';
+      # };
+      # onStart = {
+      #   uv-sync = "uv sync";
+      # };
     };
 
 
