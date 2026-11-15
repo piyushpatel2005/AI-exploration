@@ -8,11 +8,12 @@ dependencies = [
     "numpy",
     "pandas",
     "scikit-learn",
-#    "torch",
+    #    "torch",
     "ipykernel",
     "ruff",
     "jupyterlab",
-    "notebook"
+    "notebook",
+    "boto3>=1.44.0",
 ]
 
 [tool.ruff]
