@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 640" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Arrowhead Markers -->
+    <marker id="seq-arrow-solid" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563EB"/>
+    </marker>
+    <marker id="seq-arrow-dashed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7C3AED"/>
+    </marker>
+    <marker id="seq-arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#EA580C"/>
+    </marker>
+    <marker id="seq-arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16A34A"/>
+    </marker>
+
+    <!-- Filters -->
+    <filter id="box-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="460" y="32" font-size="16" font-weight="700" fill="#0F172A" text-anchor="middle">Tool Calling Sequence Flow (Amazon Bedrock Converse API &amp; AWS Lambda)</text>
+
+  <!-- Lifeline X Positions:
+       User:       x = 90
+       Client App: x = 320
+       Bedrock:    x = 590
+       Lambda:     x = 810
+  -->
+
+  <!-- Vertical Lifeline Dashed Guides -->
+  <line x1="90" y1="85" x2="90" y2="585" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="320" y1="85" x2="320" y2="585" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="590" y1="85" x2="590" y2="585" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="810" y1="85" x2="810" y2="585" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <!-- Top Headers (Participants) -->
+  <!-- 1. User -->
+  <g transform="translate(30, 48)" filter="url(#box-shadow)">
+    <rect width="120" height="38" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+    <text x="60" y="24" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">👤 User</text>
+  </g>
+
+  <!-- 2. Client Application -->
+  <g transform="translate(230, 48)" filter="url(#box-shadow)">
+    <rect width="180" height="38" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+    <text x="90" y="24" font-size="13" font-weight="700" fill="#3730A3" text-anchor="middle">💻 Client App (Boto3)</text>
+  </g>
+
+  <!-- 3. Amazon Bedrock -->
+  <g transform="translate(490, 48)" filter="url(#box-shadow)">
+    <rect width="200" height="38" rx="8" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.5"/>
+    <text x="100" y="24" font-size="13" font-weight="700" fill="#0369A1" text-anchor="middle">🧠 Bedrock (Nova Lite)</text>
+  </g>
+
+  <!-- 4. AWS Lambda -->
+  <g transform="translate(730, 48)" filter="url(#box-shadow)">
+    <rect width="160" height="38" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+    <text x="80" y="24" font-size="13" font-weight="700" fill="#9A3412" text-anchor="middle">⚡ Lambda / Tool</text>
+  </g>
+
+  <!-- SEQUENCE STEPS -->
+
+  <!-- Step 1: User -> Client App -->
+  <g transform="translate(0, 115)">
+    <line x1="90" y1="0" x2="312" y2="0" stroke="#2563EB" stroke-width="2" marker-end="url(#seq-arrow-solid)"/>
+    <circle cx="115" cy="-14" r="10" fill="#2563EB"/>
+    <text x="115" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+    <text x="132" y="-9" font-size="11.5" font-weight="600" fill="#1E293B">&quot;What is 100 minus 60?&quot;</text>
+  </g>
+
+  <!-- Step 2: Client App -> Bedrock -->
+  <g transform="translate(0, 160)">
+    <line x1="320" y1="0" x2="582" y2="0" stroke="#2563EB" stroke-width="2" marker-end="url(#seq-arrow-solid)"/>
+    <circle cx="345" cy="-14" r="10" fill="#2563EB"/>
+    <text x="345" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+    <text x="362" y="-9" font-size="11.5" font-weight="600" fill="#1E293B">converse(messages, toolConfig=[calculateNumbers])</text>
+  </g>
+
+  <!-- Bedrock Note Box: Evaluating tools -->
+  <g transform="translate(480, 185)" filter="url(#box-shadow)">
+    <rect width="220" height="36" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="110" y="16" font-size="10" font-weight="600" fill="#475569" text-anchor="middle">Evaluates prompt against toolConfig</text>
+    <text x="110" y="28" font-size="10" fill="#0284C7" font-weight="700" text-anchor="middle">Detects arithmetic: calculateNumbers needed</text>
+  </g>
+
+  <!-- Step 3: Bedrock -> Client App (tool_use response) -->
+  <g transform="translate(0, 250)">
+    <line x1="590" y1="0" x2="328" y2="0" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#seq-arrow-dashed)"/>
+    <circle cx="565" cy="-14" r="10" fill="#7C3AED"/>
+    <text x="565" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+    <text x="548" y="-9" font-size="11" font-weight="600" fill="#6B21A8" text-anchor="end">stopReason='tool_use' (toolUseId, op: 'subtract', num1: 100, num2: 60)</text>
+  </g>
+
+  <!-- Step 4: Client App -> Lambda -->
+  <g transform="translate(0, 300)">
+    <line x1="320" y1="0" x2="802" y2="0" stroke="#EA580C" stroke-width="2" marker-end="url(#seq-arrow-orange)"/>
+    <circle cx="345" cy="-14" r="10" fill="#EA580C"/>
+    <text x="345" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+    <text x="362" y="-9" font-size="11.5" font-weight="600" fill="#9A3412">invoke(operation='subtract', num1=100, num2=60)</text>
+  </g>
+
+  <!-- Lambda Execution Note -->
+  <g transform="translate(735, 318)" filter="url(#box-shadow)">
+    <rect width="150" height="30" rx="6" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1"/>
+    <text x="75" y="19" font-size="10.5" font-weight="700" fill="#B45309" text-anchor="middle">100 - 60 = 40.0</text>
+  </g>
+
+  <!-- Step 5: Lambda -> Client App (result) -->
+  <g transform="translate(0, 375)">
+    <line x1="810" y1="0" x2="328" y2="0" stroke="#16A34A" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#seq-arrow-green)"/>
+    <circle cx="785" cy="-14" r="10" fill="#16A34A"/>
+    <text x="785" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+    <text x="768" y="-9" font-size="11" font-weight="600" fill="#15803D" text-anchor="end">Return Payload: {&quot;result&quot;: 40.0}</text>
+  </g>
+
+  <!-- Step 6: Client App -> Bedrock (toolResult) -->
+  <g transform="translate(0, 430)">
+    <line x1="320" y1="0" x2="582" y2="0" stroke="#2563EB" stroke-width="2" marker-end="url(#seq-arrow-solid)"/>
+    <circle cx="345" cy="-14" r="10" fill="#2563EB"/>
+    <text x="345" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+    <text x="362" y="-9" font-size="11.5" font-weight="600" fill="#1E293B">converse(messages + toolResult={&quot;result&quot;: 40.0})</text>
+  </g>
+
+  <!-- Bedrock Note Box: Synthesizing response -->
+  <g transform="translate(480, 452)" filter="url(#box-shadow)">
+    <rect width="220" height="34" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="110" y="15" font-size="10" font-weight="600" fill="#475569" text-anchor="middle">Synthesizes tool output (40.0)</text>
+    <text x="110" y="27" font-size="10" fill="#16A34A" font-weight="700" text-anchor="middle">Generates natural language response</text>
+  </g>
+
+  <!-- Step 7: Bedrock -> Client App (final text) -->
+  <g transform="translate(0, 515)">
+    <line x1="590" y1="0" x2="328" y2="0" stroke="#16A34A" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#seq-arrow-green)"/>
+    <circle cx="565" cy="-14" r="10" fill="#16A34A"/>
+    <text x="565" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+    <text x="548" y="-9" font-size="11" font-weight="600" fill="#15803D" text-anchor="end">stopReason='end_turn' (&quot;The outcome of subtracting 60 from 100 is 40.0.&quot;)</text>
+  </g>
+
+  <!-- Step 8: Client App -> User -->
+  <g transform="translate(0, 560)">
+    <line x1="320" y1="0" x2="98" y2="0" stroke="#16A34A" stroke-width="2" marker-end="url(#seq-arrow-green)"/>
+    <circle cx="295" cy="-14" r="10" fill="#16A34A"/>
+    <text x="295" y="-10" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
+    <text x="278" y="-9" font-size="11.5" font-weight="600" fill="#15803D" text-anchor="end">&quot;The outcome of subtracting 60 from 100 is 40.0.&quot;</text>
+  </g>
+</svg>

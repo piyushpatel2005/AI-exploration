@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Arrowhead Markers -->
+    <marker id="ag-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563EB"/>
+    </marker>
+    <marker id="ag-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7C3AED"/>
+    </marker>
+    <marker id="ag-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#EA580C"/>
+    </marker>
+    <marker id="ag-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0D9488"/>
+    </marker>
+
+    <!-- Drop Shadows -->
+    <filter id="ag-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <g transform="translate(40, 20)">
+    <rect width="880" height="46" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="24" y="29" font-size="16" font-weight="700" fill="#0F172A">Amazon Bedrock Agents — Autonomous Architecture &amp; Orchestration</text>
+    <rect x="745" y="12" width="115" height="22" rx="11" fill="#EEF2FF"/>
+    <text x="802" y="27" font-size="11" font-weight="600" fill="#4F46E5" text-anchor="middle">Amazon Nova</text>
+  </g>
+
+  <!-- Left Column: User & Applications -->
+  <g transform="translate(40, 85)" filter="url(#ag-shadow)">
+    <rect width="180" height="360" rx="12" fill="#FFFFFF" stroke="#4F46E5" stroke-width="2"/>
+    <rect width="180" height="44" rx="12" fill="#EEF2FF"/>
+    <path d="M 0 32 Q 0 44 12 44 L 168 44 Q 180 44 180 32 L 180 12 Q 180 0 168 0 L 12 0 Q 0 0 0 12 Z" fill="#EEF2FF"/>
+    <circle cx="24" cy="22" r="10" fill="#4F46E5"/>
+    <text x="24" y="26" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">👤</text>
+    <text x="42" y="27" font-size="13" font-weight="700" fill="#1E1B4B">Client Interaction</text>
+
+    <!-- Internal Application Cards -->
+    <rect x="14" y="60" width="152" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="22" y="78" font-size="11" font-weight="700" fill="#334155">Chat Applications</text>
+    <text x="22" y="94" font-size="9.5" fill="#64748B">Web &amp; Mobile Interfaces</text>
+    <text x="22" y="108" font-size="9.5" fill="#64748B">Conversational UI</text>
+
+    <rect x="14" y="132" width="152" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="22" y="150" font-size="11" font-weight="700" fill="#334155">Enterprise APIs</text>
+    <text x="22" y="166" font-size="9.5" fill="#64748B">Automated Workflows</text>
+    <text x="22" y="180" font-size="9.5" fill="#64748B">Backend Services</text>
+
+    <rect x="14" y="204" width="152" height="74" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="22" y="222" font-size="11" font-weight="700" fill="#4F46E5">Data Plane API</text>
+    <text x="22" y="238" font-size="9.5" font-family="monospace" fill="#334155">invoke_agent(</text>
+    <text x="26" y="252" font-size="9.5" font-family="monospace" fill="#334155">  inputText,...</text>
+    <text x="26" y="266" font-size="9.5" font-family="monospace" fill="#334155">  enableTrace=True)</text>
+
+    <rect x="14" y="290" width="152" height="42" rx="8" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="22" y="307" font-size="10" font-weight="700" fill="#065F46">EventStream Handler</text>
+    <text x="22" y="321" font-size="9" fill="#047857">Chunked Text &amp; Traces</text>
+  </g>
+
+  <!-- Center Column: Bedrock Agent Engine -->
+  <g transform="translate(255, 85)" filter="url(#ag-shadow)">
+    <rect width="420" height="360" rx="12" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect width="420" height="44" rx="12" fill="#F0F9FF"/>
+    <path d="M 0 32 Q 0 44 12 44 L 408 44 Q 420 44 420 32 L 420 12 Q 420 0 408 0 L 12 0 Q 0 0 0 12 Z" fill="#F0F9FF"/>
+    <circle cx="26" cy="22" r="10" fill="#0284C7"/>
+    <text x="26" y="26" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">⚙️</text>
+    <text x="44" y="27" font-size="14" font-weight="700" fill="#0C4A6E">Amazon Bedrock Agent Engine</text>
+    <rect x="290" y="11" width="115" height="22" rx="11" fill="#E0F2FE"/>
+    <text x="347" y="26" font-size="10.5" font-weight="600" fill="#0284C7" text-anchor="middle">Autonomous Core</text>
+
+    <!-- Sub-block 1: Foundation Model -->
+    <rect x="16" y="58" width="186" height="85" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="76" font-size="11.5" font-weight="700" fill="#0F172A">🧠 Foundation Model</text>
+    <text x="26" y="93" font-size="10" font-weight="600" fill="#0284C7">Amazon Nova Pro / Lite</text>
+    <text x="26" y="108" font-size="9.5" fill="#64748B">• Natural language parsing</text>
+    <text x="26" y="122" font-size="9.5" fill="#64748B">• Task decomposition &amp; intent</text>
+    <text x="26" y="135" font-size="9.5" fill="#64748B">• Multi-step reasoning</text>
+
+    <!-- Sub-block 2: Agent Instructions -->
+    <rect x="216" y="58" width="188" height="85" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="226" y="76" font-size="11.5" font-weight="700" fill="#0F172A">📋 Agent Instructions</text>
+    <text x="226" y="93" font-size="10" font-weight="600" fill="#7C3AED">Mission &amp; Guardrails</text>
+    <text x="226" y="108" font-size="9.5" fill="#64748B">• Persona &amp; tone definition</text>
+    <text x="226" y="122" font-size="9.5" fill="#64748B">• Boundary rules &amp; validation</text>
+    <text x="226" y="135" font-size="9.5" fill="#64748B">• Step-by-step decision rules</text>
+
+    <!-- Sub-block 3: Orchestration & ReAct Loop -->
+    <rect x="16" y="154" width="388" height="96" rx="8" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="26" y="174" font-size="12" font-weight="700" fill="#92400E">🔄 Autonomous Orchestration Engine (ReAct Cycle)</text>
+    <rect x="26" y="184" width="112" height="54" rx="6" fill="#FFFFFF" stroke="#F59E0B"/>
+    <text x="82" y="202" font-size="10" font-weight="700" fill="#B45309" text-anchor="middle">1. RATIONALE</text>
+    <text x="82" y="217" font-size="8.5" fill="#78350F" text-anchor="middle">Analyze User Intent</text>
+    <text x="82" y="229" font-size="8.5" fill="#78350F" text-anchor="middle">&amp; Context State</text>
+
+    <text x="148" y="215" font-size="14" font-weight="700" fill="#B45309">→</text>
+
+    <rect x="164" y="184" width="112" height="54" rx="6" fill="#FFFFFF" stroke="#F59E0B"/>
+    <text x="220" y="202" font-size="10" font-weight="700" fill="#B45309" text-anchor="middle">2. ACTION</text>
+    <text x="220" y="217" font-size="8.5" fill="#78350F" text-anchor="middle">Invoke Tool / API</text>
+    <text x="220" y="229" font-size="8.5" fill="#78350F" text-anchor="middle">or Query KB</text>
+
+    <text x="286" y="215" font-size="14" font-weight="700" fill="#B45309">→</text>
+
+    <rect x="302" y="184" width="92" height="54" rx="6" fill="#FFFFFF" stroke="#F59E0B"/>
+    <text x="348" y="202" font-size="10" font-weight="700" fill="#B45309" text-anchor="middle">3. OBSERVATION</text>
+    <text x="348" y="217" font-size="8.5" fill="#78350F" text-anchor="middle">Evaluate Result &amp;</text>
+    <text x="348" y="229" font-size="8.5" fill="#78350F" text-anchor="middle">Synthesize Answer</text>
+
+    <!-- Sub-block 4: Memory & Code Interpreter -->
+    <rect x="16" y="260" width="186" height="85" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="278" font-size="11" font-weight="700" fill="#0F172A">💾 Agent Memory</text>
+    <text x="26" y="294" font-size="9.5" fill="#64748B">• Cross-session context</text>
+    <text x="26" y="308" font-size="9.5" fill="#64748B">• Automated session summaries</text>
+    <text x="26" y="322" font-size="9.5" fill="#64748B">• Configurable retention window</text>
+
+    <rect x="216" y="260" width="188" height="85" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="226" y="278" font-size="11" font-weight="700" fill="#0F172A">🐍 Code Interpreter</text>
+    <text x="226" y="294" font-size="9.5" fill="#64748B">• Secure Python sandbox</text>
+    <text x="226" y="308" font-size="9.5" fill="#64748B">• Data visualization &amp; chart gen</text>
+    <text x="226" y="322" font-size="9.5" fill="#64748B">• Format &amp; complex calculations</text>
+  </g>
+
+  <!-- Right Column: Tools & Extensions -->
+  <g transform="translate(710, 85)" filter="url(#ag-shadow)">
+    <rect width="210" height="360" rx="12" fill="#FFFFFF" stroke="#EA580C" stroke-width="2"/>
+    <rect width="210" height="44" rx="12" fill="#FFF7ED"/>
+    <path d="M 0 32 Q 0 44 12 44 L 198 44 Q 210 44 210 32 L 210 12 Q 210 0 198 0 L 12 0 Q 0 0 0 12 Z" fill="#FFF7ED"/>
+    <circle cx="24" cy="22" r="10" fill="#EA580C"/>
+    <text x="24" y="26" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">🛠️</text>
+    <text x="42" y="27" font-size="13" font-weight="700" fill="#7C2D12">Extensions &amp; RAG</text>
+
+    <!-- Right Box 1: Action Groups -->
+    <rect x="14" y="58" width="182" height="85" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="22" y="76" font-size="11" font-weight="700" fill="#EA580C">⚡ Action Groups</text>
+    <text x="22" y="92" font-size="9.5" fill="#334155">• AWS Lambda functions</text>
+    <text x="22" y="106" font-size="9.5" fill="#334155">• OpenAPI REST schemas</text>
+    <text x="22" y="120" font-size="9.5" fill="#334155">• Return Control (Client Tools)</text>
+    <text x="22" y="134" font-size="9.5" fill="#64748B">Dynamic execution</text>
+
+    <!-- Right Box 2: Knowledge Bases -->
+    <rect x="14" y="154" width="182" height="90" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="22" y="172" font-size="11" font-weight="700" fill="#0D9488">📚 Knowledge Bases (RAG)</text>
+    <text x="22" y="188" font-size="9.5" fill="#334155">• Titan Text Embeddings V2</text>
+    <text x="22" y="202" font-size="9.5" fill="#334155">• Vector store (OpenSearch, etc)</text>
+    <text x="22" y="216" font-size="9.5" fill="#334155">• Verifiable citations &amp; docs</text>
+    <text x="22" y="230" font-size="9.5" fill="#64748B">Company policies &amp; FAQs</text>
+
+    <!-- Right Box 3: Multi-Agent Collaboration -->
+    <rect x="14" y="254" width="182" height="92" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="22" y="272" font-size="11" font-weight="700" fill="#7C3AED">🤝 Multi-Agent Teams</text>
+    <text x="22" y="288" font-size="9.5" fill="#334155">• Supervisor / Sub-agent routing</text>
+    <text x="22" y="302" font-size="9.5" fill="#334155">• Specialized domain workers</text>
+    <text x="22" y="316" font-size="9.5" fill="#334155">• Seamless context handoff</text>
+    <text x="22" y="330" font-size="9.5" fill="#64748B">Travel, HR, Analytics agents</text>
+  </g>
+
+  <!-- Connective Arrows -->
+  <!-- Left -> Center (Input) -->
+  <line x1="220" y1="210" x2="250" y2="210" stroke="#2563EB" stroke-width="2.5" marker-end="url(#ag-blue)"/>
+  <rect x="224" y="194" width="24" height="14" rx="4" fill="#2563EB"/>
+  <text x="236" y="204" font-size="8.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">IN</text>
+
+  <!-- Center -> Left (Output Stream) -->
+  <line x1="255" y1="310" x2="225" y2="310" stroke="#16A34A" stroke-width="2.5" marker-end="url(#ag-teal)"/>
+  <rect x="226" y="294" width="26" height="14" rx="4" fill="#16A34A"/>
+  <text x="239" y="304" font-size="8" font-weight="700" fill="#FFFFFF" text-anchor="middle">OUT</text>
+
+  <!-- Center <-> Right (Action Groups & KBs) -->
+  <line x1="675" y1="180" x2="705" y2="180" stroke="#EA580C" stroke-width="2" marker-end="url(#ag-orange)"/>
+  <line x1="705" y1="210" x2="680" y2="210" stroke="#0D9488" stroke-width="2" marker-end="url(#ag-teal)"/>
+  <line x1="675" y1="290" x2="705" y2="290" stroke="#7C3AED" stroke-width="2" marker-end="url(#ag-purple)"/>
+
+  <!-- Bottom Banner: Orchestration EventStream & Trace Visibility -->
+  <g transform="translate(40, 465)" filter="url(#ag-shadow)">
+    <rect width="880" height="90" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="14" y="12" width="170" height="26" rx="6" fill="#EDE9FE"/>
+    <text x="99" y="29" font-size="11" font-weight="700" fill="#5B21B6" text-anchor="middle">🔎 EventStream &amp; Trace Pipeline</text>
+
+    <text x="200" y="29" font-size="11" font-weight="600" fill="#334155">
+      The Bedrock Agent emits real-time steps: <tspan fill="#7C3AED" font-weight="700">rationale</tspan> (thought) → <tspan fill="#EA580C" font-weight="700">invocationInput</tspan> (tool call) → <tspan fill="#0D9488" font-weight="700">observation</tspan> (result) → <tspan fill="#2563EB" font-weight="700">chunk</tspan> (token output)
+    </text>
+
+    <!-- Step pipeline boxes -->
+    <rect x="20" y="48" width="180" height="30" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <text x="110" y="67" font-size="10" font-weight="600" fill="#334155" text-anchor="middle">1. Model Rationale (Thinking)</text>
+
+    <text x="212" y="68" font-size="14" font-weight="700" fill="#94A3B8">→</text>
+
+    <rect x="230" y="48" width="190" height="30" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <text x="325" y="67" font-size="10" font-weight="600" fill="#334155" text-anchor="middle">2. Action Group / KB Execution</text>
+
+    <text x="432" y="68" font-size="14" font-weight="700" fill="#94A3B8">→</text>
+
+    <rect x="450" y="48" width="200" height="30" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <text x="550" y="67" font-size="10" font-weight="600" fill="#334155" text-anchor="middle">3. Observation &amp; Citations Ingest</text>
+
+    <text x="662" y="68" font-size="14" font-weight="700" fill="#94A3B8">→</text>
+
+    <rect x="680" y="48" width="180" height="30" rx="6" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="770" y="67" font-size="10" font-weight="700" fill="#065F46" text-anchor="middle">4. Final Streamed Response</text>
+  </g>
+</svg>

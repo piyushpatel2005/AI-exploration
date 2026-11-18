@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Arrowhead Markers -->
+    <marker id="wt-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563EB"/>
+    </marker>
+    <marker id="wt-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7C3AED"/>
+    </marker>
+    <marker id="wt-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#EA580C"/>
+    </marker>
+    <marker id="wt-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16A34A"/>
+    </marker>
+
+    <!-- Drop Shadow -->
+    <filter id="wt-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <g transform="translate(40, 24)">
+    <rect width="860" height="48" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="24" y="30" font-size="16" font-weight="700" fill="#0F172A">Converse API Weather Tool Lifecycle (Amazon Nova &amp; AWS Lambda)</text>
+    <rect x="730" y="14" width="116" height="22" rx="11" fill="#EEF2FF"/>
+    <text x="788" y="29" font-size="11" font-weight="600" fill="#4F46E5" text-anchor="middle">Amazon Nova Pro</text>
+  </g>
+
+  <!-- Card 1: Client Application (Left) -->
+  <g transform="translate(40, 95)" filter="url(#wt-shadow)">
+    <rect width="250" height="425" rx="14" fill="#FFFFFF" stroke="#4F46E5" stroke-width="2"/>
+    <rect width="250" height="52" rx="14" fill="#EEF2FF"/>
+    <path d="M 0 38 Q 0 52 14 52 L 236 52 Q 250 52 250 38 L 250 14 Q 250 0 236 0 L 14 0 Q 0 0 0 14 Z" fill="#EEF2FF"/>
+    <circle cx="28" cy="26" r="12" fill="#4F46E5"/>
+    <text x="28" y="31" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">App</text>
+    <text x="50" y="26" font-size="14" font-weight="700" fill="#1E1B4B">Client Application</text>
+    <text x="50" y="42" font-size="11" font-weight="500" fill="#6B7280">Python Boto3 / Orchestrator</text>
+
+    <!-- Steps inside Client App -->
+    <rect x="16" y="70" width="218" height="68" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="90" font-size="11" font-weight="700" fill="#334155">1. User Query &amp; ToolConfig</text>
+    <text x="26" y="107" font-size="10.5" fill="#64748B">&quot;Weather in Portland?&quot;</text>
+    <text x="26" y="123" font-size="10" fill="#4F46E5">+ toolSpec: getWeather(lat, lon)</text>
+
+    <rect x="16" y="152" width="218" height="74" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="172" font-size="11" font-weight="700" fill="#7C3AED">2. Intercept Tool Call</text>
+    <text x="26" y="189" font-size="10.5" fill="#64748B">stopReason == 'tool_use'</text>
+    <text x="26" y="204" font-size="10" fill="#7C3AED">toolName: &quot;getWeather&quot;</text>
+    <text x="26" y="218" font-size="10" fill="#64748B">input: {lat: 45.5152, lon: -122.67}</text>
+
+    <rect x="16" y="240" width="218" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="260" font-size="11" font-weight="700" fill="#EA580C">3 &amp; 4. Dispatch to Lambda</text>
+    <text x="26" y="277" font-size="10.5" fill="#64748B">lambda_client.invoke(</text>
+    <text x="26" y="291" font-size="10" font-family="monospace" fill="#EA580C">  FunctionName='weather-tool')</text>
+    <text x="26" y="306" font-size="10.5" fill="#16A34A">Result: 62°F, Partly Cloudy</text>
+
+    <rect x="16" y="330" width="218" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="350" font-size="11" font-weight="700" fill="#2563EB">5 &amp; 6. Return Result &amp; Display</text>
+    <text x="26" y="367" font-size="10.5" fill="#64748B">Send toolResult to Nova</text>
+    <text x="26" y="384" font-size="10.5" fill="#16A34A" font-weight="600">&quot;The weather in Portland is</text>
+    <text x="26" y="399" font-size="10.5" fill="#16A34A" font-weight="600">62°F with partly cloudy skies.&quot;</text>
+  </g>
+
+  <!-- Card 2: Amazon Bedrock (Center) -->
+  <g transform="translate(345, 95)" filter="url(#wt-shadow)">
+    <rect width="260" height="425" rx="14" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect width="260" height="52" rx="14" fill="#F0F9FF"/>
+    <path d="M 0 38 Q 0 52 14 52 L 246 52 Q 260 52 260 38 L 260 14 Q 260 0 246 0 L 14 0 Q 0 0 0 14 Z" fill="#F0F9FF"/>
+    <circle cx="28" cy="26" r="12" fill="#0284C7"/>
+    <text x="28" y="31" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">AI</text>
+    <text x="50" y="26" font-size="14" font-weight="700" fill="#0C4A6E">Amazon Bedrock</text>
+    <text x="50" y="42" font-size="11" font-weight="500" fill="#0369A1">us.amazon.nova-pro-v1:0</text>
+
+    <!-- Bedrock internal evaluation -->
+    <rect x="18" y="70" width="224" height="150" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="28" y="92" font-size="11.5" font-weight="700" fill="#0F172A">Converse Evaluation</text>
+    <text x="28" y="111" font-size="10.5" fill="#475569">• Reads system prompt</text>
+    <text x="28" y="128" font-size="10.5" fill="#475569">• Recognizes city: Portland</text>
+    <text x="28" y="146" font-size="10.5" fill="#7C3AED" font-weight="600">• Generates toolUse block:</text>
+    <rect x="28" y="154" width="204" height="54" rx="6" fill="#EDE9FE"/>
+    <text x="36" y="170" font-size="9.5" font-family="monospace" fill="#5B21B6">name: &quot;getWeather&quot;</text>
+    <text x="36" y="186" font-size="9.5" font-family="monospace" fill="#5B21B6">input: {lat: 45.5152,</text>
+    <text x="36" y="200" font-size="9.5" font-family="monospace" fill="#5B21B6">        lon: -122.6784}</text>
+
+    <rect x="18" y="245" width="224" height="165" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="28" y="268" font-size="11.5" font-weight="700" fill="#0F172A">Synthesis &amp; Response</text>
+    <text x="28" y="288" font-size="10.5" fill="#475569">• Ingests toolResult message</text>
+    <text x="28" y="306" font-size="10.5" fill="#475569">• Correlates with toolUseId</text>
+    <text x="28" y="324" font-size="10.5" fill="#475569">• Produces natural language</text>
+    <text x="28" y="340" font-size="10.5" fill="#475569">  weather report</text>
+    <rect x="28" y="352" width="204" height="46" rx="6" fill="#DCFCE7"/>
+    <text x="36" y="370" font-size="9.5" font-weight="600" fill="#15803D">stopReason: &quot;end_turn&quot;</text>
+    <text x="36" y="386" font-size="9.5" fill="#166534">&quot;The weather in Portland...&quot;</text>
+  </g>
+
+  <!-- Card 3: AWS Lambda Weather Tool (Right) -->
+  <g transform="translate(660, 95)" filter="url(#wt-shadow)">
+    <rect width="240" height="425" rx="14" fill="#FFFFFF" stroke="#EA580C" stroke-width="2"/>
+    <rect width="240" height="52" rx="14" fill="#FFF7ED"/>
+    <path d="M 0 38 Q 0 52 14 52 L 226 52 Q 240 52 240 38 L 240 14 Q 240 0 226 0 L 14 0 Q 0 0 0 14 Z" fill="#FFF7ED"/>
+    <circle cx="28" cy="26" r="12" fill="#EA580C"/>
+    <text x="28" y="31" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">λ</text>
+    <text x="50" y="26" font-size="14" font-weight="700" fill="#7C2D12">AWS Lambda</text>
+    <text x="50" y="42" font-size="11" font-weight="500" fill="#C2410C">weather-tool / Mock Service</text>
+
+    <!-- Lambda Code Display -->
+    <rect x="16" y="70" width="208" height="340" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="94" font-size="11.5" font-weight="700" fill="#0F172A">Weather Lambda Code</text>
+    <rect x="26" y="106" width="188" height="152" rx="6" fill="#1E293B"/>
+    <text x="34" y="125" font-size="9" font-family="monospace" fill="#93C5FD">def lambda_handler(e):</text>
+    <text x="42" y="142" font-size="9" font-family="monospace" fill="#F8FAFC">lat = e['lat']</text>
+    <text x="42" y="157" font-size="9" font-family="monospace" fill="#F8FAFC">lon = e['lon']</text>
+    <text x="42" y="174" font-size="9" font-family="monospace" fill="#FCD34D"># Query weather API</text>
+    <text x="42" y="191" font-size="9" font-family="monospace" fill="#F8FAFC">res = fetch_weather(lat, lon)</text>
+    <text x="42" y="208" font-size="9" font-family="monospace" fill="#4ADE80">return {</text>
+    <text x="50" y="223" font-size="8.5" font-family="monospace" fill="#4ADE80">  'temp': '62°F',</text>
+    <text x="50" y="238" font-size="8.5" font-family="monospace" fill="#4ADE80">  'condition': 'Cloudy'</text>
+    <text x="42" y="251" font-size="9" font-family="monospace" fill="#4ADE80">}</text>
+
+    <rect x="26" y="272" width="188" height="60" rx="6" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="34" y="292" font-size="10.5" font-weight="700" fill="#92400E">Dual-Mode Dispatcher</text>
+    <text x="34" y="309" font-size="9.5" fill="#78350F">✓ Live AWS Lambda Invocation</text>
+    <text x="34" y="324" font-size="9.5" fill="#78350F">✓ Offline Weather Mock</text>
+  </g>
+
+  <!-- Flow Arrows & Badges -->
+
+  <!-- Flow 1: Client -> Bedrock (Top) -->
+  <path d="M 290 185 L 340 185" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#wt-blue)"/>
+  <rect x="294" y="162" width="44" height="18" rx="9" fill="#2563EB"/>
+  <text x="316" y="175" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 1</text>
+
+  <!-- Flow 2: Bedrock -> Client (Tool Use) -->
+  <path d="M 345 245 L 295 245" fill="none" stroke="#7C3AED" stroke-width="2.5" marker-end="url(#wt-purple)"/>
+  <rect x="294" y="223" width="44" height="18" rx="9" fill="#7C3AED"/>
+  <text x="316" y="236" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 2</text>
+
+  <!-- Flow 3: Client -> Lambda (Invoke Tool) -->
+  <path d="M 290 320 C 310 320, 610 260, 655 260" fill="none" stroke="#EA580C" stroke-width="2.5" marker-end="url(#wt-orange)"/>
+  <rect x="605" y="240" width="44" height="18" rx="9" fill="#EA580C"/>
+  <text x="627" y="253" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 3</text>
+
+  <!-- Flow 4: Lambda -> Client (Tool Result) -->
+  <path d="M 655 305 C 610 305, 330 355, 295 355" fill="none" stroke="#16A34A" stroke-width="2.5" marker-end="url(#wt-green)"/>
+  <rect x="605" y="315" width="44" height="18" rx="9" fill="#16A34A"/>
+  <text x="627" y="328" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 4</text>
+
+  <!-- Flow 5: Client -> Bedrock (Send toolResult) -->
+  <path d="M 290 415 L 340 415" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#wt-blue)"/>
+  <rect x="294" y="393" width="44" height="18" rx="9" fill="#2563EB"/>
+  <text x="316" y="406" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 5</text>
+
+  <!-- Flow 6: Bedrock -> Client (Final Answer) -->
+  <path d="M 345 455 L 295 455" fill="none" stroke="#16A34A" stroke-width="2.5" marker-end="url(#wt-green)"/>
+  <rect x="294" y="460" width="44" height="18" rx="9" fill="#16A34A"/>
+  <text x="316" y="473" font-size="9.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 6</text>
+</svg>

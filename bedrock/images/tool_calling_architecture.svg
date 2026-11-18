@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#EA580C"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16A34A"/>
+    </marker>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <g transform="translate(40, 24)">
+    <rect width="880" height="48" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="24" y="30" font-size="16" font-weight="700" fill="#0F172A">Amazon Bedrock Converse API — Tool Calling (Function Calling) Architecture</text>
+    <rect x="760" y="14" width="100" height="22" rx="11" fill="#EEF2FF"/>
+    <text x="810" y="29" font-size="11" font-weight="600" fill="#4F46E5" text-anchor="middle">Nova Models</text>
+  </g>
+
+  <!-- Entity 1: Client Application (Left) -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="250" height="425" rx="14" fill="#FFFFFF" stroke="#4F46E5" stroke-width="2"/>
+    <rect width="250" height="52" rx="14" fill="#EEF2FF"/>
+    <path d="M 0 38 Q 0 52 14 52 L 236 52 Q 250 52 250 38 L 250 14 Q 250 0 236 0 L 14 0 Q 0 0 0 14 Z" fill="#EEF2FF"/>
+    <circle cx="28" cy="26" r="12" fill="#4F46E5"/>
+    <text x="28" y="31" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">App</text>
+    <text x="50" y="26" font-size="14" font-weight="700" fill="#1E1B4B">Client Application</text>
+    <text x="50" y="42" font-size="11" font-weight="500" fill="#6B7280">Boto3 Runtime / Notebook Kernel</text>
+
+    <!-- Client internal state / steps -->
+    <rect x="16" y="70" width="218" height="65" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="90" font-size="11" font-weight="700" fill="#334155">1. User Query &amp; Config</text>
+    <text x="26" y="107" font-size="10.5" fill="#64748B">&quot;What is 100 minus 60?&quot;</text>
+    <text x="26" y="122" font-size="10.5" fill="#64748B">+ math_tool (JSON schema)</text>
+
+    <rect x="16" y="150" width="218" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="170" font-size="11" font-weight="700" fill="#7C3AED">2. Intercept tool_use</text>
+    <text x="26" y="187" font-size="10.5" fill="#64748B">stopReason == 'tool_use'</text>
+    <text x="26" y="202" font-size="10.5" fill="#64748B">Extract: toolUseId, name,</text>
+    <text x="26" y="217" font-size="10.5" fill="#64748B">operation='subtract', 100, 60</text>
+
+    <rect x="16" y="240" width="218" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="260" font-size="11" font-weight="700" fill="#EA580C">3 &amp; 4. Dispatch Tool</text>
+    <text x="26" y="277" font-size="10.5" fill="#64748B">Invoke AWS Lambda /</text>
+    <text x="26" y="292" font-size="10.5" fill="#64748B">local math dispatcher</text>
+    <text x="26" y="307" font-size="10.5" fill="#16A34A">Received: {'result': 40.0}</text>
+
+    <rect x="16" y="330" width="218" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="350" font-size="11" font-weight="700" fill="#2563EB">5 &amp; 6. Return Result</text>
+    <text x="26" y="367" font-size="10.5" fill="#64748B">Send toolResult to Bedrock</text>
+    <text x="26" y="384" font-size="10.5" fill="#16A34A" font-weight="600">Final Output: &quot;The outcome</text>
+    <text x="26" y="399" font-size="10.5" fill="#16A34A" font-weight="600">of subtracting 60 from 100 is 40.0&quot;</text>
+  </g>
+
+  <!-- Entity 2: Amazon Bedrock (Center) -->
+  <g transform="translate(355, 95)" filter="url(#shadow)">
+    <rect width="260" height="425" rx="14" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect width="260" height="52" rx="14" fill="#F0F9FF"/>
+    <path d="M 0 38 Q 0 52 14 52 L 246 52 Q 260 52 260 38 L 260 14 Q 260 0 246 0 L 14 0 Q 0 0 0 14 Z" fill="#F0F9FF"/>
+    <circle cx="28" cy="26" r="12" fill="#0284C7"/>
+    <text x="28" y="31" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">AI</text>
+    <text x="50" y="26" font-size="14" font-weight="700" fill="#0C4A6E">Amazon Bedrock</text>
+    <text x="50" y="42" font-size="11" font-weight="500" fill="#0369A1">us.amazon.nova-lite-v1:0 (Converse API)</text>
+
+    <rect x="18" y="70" width="224" height="150" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="28" y="92" font-size="11.5" font-weight="700" fill="#0F172A">Converse Evaluation</text>
+    <text x="28" y="112" font-size="10.5" fill="#475569">• Inspects prompt &amp; tools</text>
+    <text x="28" y="130" font-size="10.5" fill="#475569">• Identifies tool need: math</text>
+    <text x="28" y="148" font-size="10.5" fill="#7C3AED" font-weight="600">• Generates toolUse block:</text>
+    <rect x="28" y="156" width="204" height="52" rx="6" fill="#EDE9FE"/>
+    <text x="36" y="172" font-size="9.5" font-family="monospace" fill="#5B21B6">name: &quot;calculateNumbers&quot;</text>
+    <text x="36" y="188" font-size="9.5" font-family="monospace" fill="#5B21B6">input: {op: 'subtract',</text>
+    <text x="36" y="202" font-size="9.5" font-family="monospace" fill="#5B21B6">        num1: 100, num2: 60}</text>
+
+    <rect x="18" y="245" width="224" height="165" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="28" y="268" font-size="11.5" font-weight="700" fill="#0F172A">Synthesis &amp; Response</text>
+    <text x="28" y="288" font-size="10.5" fill="#475569">• Receives toolResult block</text>
+    <text x="28" y="306" font-size="10.5" fill="#475569">• Matches toolUseId in history</text>
+    <text x="28" y="324" font-size="10.5" fill="#475569">• Integrates result (40.0) into</text>
+    <text x="28" y="340" font-size="10.5" fill="#475569">  conversational context</text>
+    <rect x="28" y="352" width="204" height="46" rx="6" fill="#DCFCE7"/>
+    <text x="36" y="370" font-size="9.5" font-weight="600" fill="#15803D">stopReason: &quot;end_turn&quot;</text>
+    <text x="36" y="386" font-size="9.5" fill="#166534">&quot;100 minus 60 is 40.0.&quot;</text>
+  </g>
+
+  <!-- Entity 3: AWS Lambda / External Tool (Right) -->
+  <g transform="translate(680, 95)" filter="url(#shadow)">
+    <rect width="240" height="425" rx="14" fill="#FFFFFF" stroke="#EA580C" stroke-width="2"/>
+    <rect width="240" height="52" rx="14" fill="#FFF7ED"/>
+    <path d="M 0 38 Q 0 52 14 52 L 226 52 Q 240 52 240 38 L 240 14 Q 240 0 226 0 L 14 0 Q 0 0 0 14 Z" fill="#FFF7ED"/>
+    <circle cx="28" cy="26" r="12" fill="#EA580C"/>
+    <text x="28" y="31" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">λ</text>
+    <text x="50" y="26" font-size="14" font-weight="700" fill="#7C2D12">AWS Lambda</text>
+    <text x="50" y="42" font-size="11" font-weight="500" fill="#C2410C">math-function / Tool Dispatcher</text>
+
+    <rect x="16" y="70" width="208" height="340" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="26" y="94" font-size="11.5" font-weight="700" fill="#0F172A">Tool Execution Logic</text>
+    <rect x="26" y="106" width="188" height="150" rx="6" fill="#1E293B"/>
+    <text x="34" y="125" font-size="9.5" font-family="monospace" fill="#93C5FD">def lambda_handler(e):</text>
+    <text x="42" y="142" font-size="9" font-family="monospace" fill="#F8FAFC">op = e['operation']</text>
+    <text x="42" y="157" font-size="9" font-family="monospace" fill="#F8FAFC">n1, n2 = e['num1'], e['num2']</text>
+    <text x="42" y="174" font-size="9" font-family="monospace" fill="#FCD34D">if op == 'subtract':</text>
+    <text x="50" y="189" font-size="9" font-family="monospace" fill="#4ADE80">res = n1 - n2  # 40.0</text>
+    <text x="42" y="206" font-size="9" font-family="monospace" fill="#FCD34D">elif op == 'divide':</text>
+    <text x="50" y="221" font-size="9" font-family="monospace" fill="#F87171">if n2==0: raise Err</text>
+    <text x="42" y="238" font-size="9" font-family="monospace" fill="#93C5FD">return {'result': res}</text>
+
+    <rect x="26" y="270" width="188" height="60" rx="6" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="34" y="290" font-size="10.5" font-weight="700" fill="#92400E">Dual-Mode Dispatcher</text>
+    <text x="34" y="307" font-size="9.5" fill="#78350F">✓ Live AWS Lambda API</text>
+    <text x="34" y="322" font-size="9.5" fill="#78350F">✓ Standalone Local Fallback</text>
+  </g>
+
+  <!-- Flow Arrows & Badges -->
+
+  <!-- Flow 1: Client -> Bedrock (Top) -->
+  <path d="M 290 185 L 350 185" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <rect x="296" y="162" width="48" height="18" rx="9" fill="#2563EB"/>
+  <text x="320" y="175" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 1</text>
+
+  <!-- Flow 2: Bedrock -> Client (Tool Use) -->
+  <path d="M 355 245 L 295 245" fill="none" stroke="#7C3AED" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+  <rect x="296" y="223" width="48" height="18" rx="9" fill="#7C3AED"/>
+  <text x="320" y="236" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 2</text>
+
+  <!-- Flow 3: Client -> Lambda (Invoke Tool) - arches under or across -->
+  <path d="M 290 320 C 310 320, 630 260, 675 260" fill="none" stroke="#EA580C" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+  <rect x="625" y="240" width="48" height="18" rx="9" fill="#EA580C"/>
+  <text x="649" y="253" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 3</text>
+
+  <!-- Flow 4: Lambda -> Client (Tool Result) -->
+  <path d="M 675 305 C 630 305, 330 355, 295 355" fill="none" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <rect x="625" y="315" width="48" height="18" rx="9" fill="#16A34A"/>
+  <text x="649" y="328" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 4</text>
+
+  <!-- Flow 5: Client -> Bedrock (Send toolResult) -->
+  <path d="M 290 415 L 350 415" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <rect x="296" y="393" width="48" height="18" rx="9" fill="#2563EB"/>
+  <text x="320" y="406" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 5</text>
+
+  <!-- Flow 6: Bedrock -> Client (Final Answer) -->
+  <path d="M 355 455 L 295 455" fill="none" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <rect x="296" y="460" width="48" height="18" rx="9" fill="#16A34A"/>
+  <text x="320" y="473" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Step 6</text>
+</svg>
