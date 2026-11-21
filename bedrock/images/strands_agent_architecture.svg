@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 540" width="100%" height="100%" style="background:#0f172a; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="harnessGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="modelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+    <linearGradient id="toolsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="contextGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <text x="510" y="40" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="0.5">Strands Agents SDK Architecture: Model + Harness</text>
+  <text x="510" y="66" text-anchor="middle" fill="#94a3b8" font-size="13">Agent = Foundation Model (Reasoning Engine) + Strands Agent Harness (Runtime, Tools, Context, Memory)</text>
+
+  <!-- Left: The Three Engineering Layers -->
+  <g transform="translate(40, 100)">
+    <rect width="260" height="400" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect width="260" height="44" rx="12" fill="#334155"/>
+    <text x="130" y="28" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="700">Three Engineering Layers</text>
+
+    <!-- Layer 1 -->
+    <g transform="translate(15, 60)">
+      <rect width="230" height="95" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="15" y="26" fill="#c084fc" font-size="13" font-weight="700">1. Prompt Engineering</text>
+      <text x="15" y="48" fill="#cbd5e1" font-size="11">System instructions &amp; persona</text>
+      <text x="15" y="66" fill="#94a3b8" font-size="11">Behavioral boundaries &amp; rules</text>
+      <text x="15" y="84" fill="#64748b" font-size="10">What the model is asked to do</text>
+    </g>
+
+    <!-- Layer 2 -->
+    <g transform="translate(15, 170)">
+      <rect width="230" height="95" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+      <text x="15" y="26" fill="#fbbf24" font-size="13" font-weight="700">2. Context Engineering</text>
+      <text x="15" y="48" fill="#cbd5e1" font-size="11">Conversation history compression</text>
+      <text x="15" y="66" fill="#94a3b8" font-size="11">ContextOffloader &amp; FileStorage</text>
+      <text x="15" y="84" fill="#64748b" font-size="10">What enters the token window</text>
+    </g>
+
+    <!-- Layer 3 -->
+    <g transform="translate(15, 280)">
+      <rect width="230" height="105" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+      <text x="15" y="26" fill="#60a5fa" font-size="13" font-weight="700">3. Harness Engineering</text>
+      <text x="15" y="48" fill="#cbd5e1" font-size="11">Autonomous ReAct loop runtime</text>
+      <text x="15" y="66" fill="#94a3b8" font-size="11">Tool dispatch &amp; error handling</text>
+      <text x="15" y="84" fill="#94a3b8" font-size="11">Lifecycle hooks &amp; tracing</text>
+    </g>
+  </g>
+
+  <!-- Center & Right: Agent Harness System Diagram -->
+  <g transform="translate(330, 100)">
+    <!-- Outer Harness Boundary -->
+    <rect width="650" height="400" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4" filter="url(#shadow)"/>
+    <rect width="650" height="42" rx="14" fill="#1d4ed8"/>
+    <text x="325" y="27" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Strands Agent Harness: Runtime &amp; Orchestration System</text>
+
+    <!-- Center: Model Box -->
+    <g transform="translate(210, 65)">
+      <rect width="230" height="85" rx="10" fill="url(#modelGrad)" filter="url(#shadow)"/>
+      <text x="115" y="32" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Amazon Bedrock Model</text>
+      <text x="115" y="52" text-anchor="middle" fill="#e9d5ff" font-size="12">Amazon Nova Lite / Nova Pro</text>
+      <text x="115" y="70" text-anchor="middle" fill="#ddd6fe" font-size="10">Reasoning &amp; Decision Engine</text>
+    </g>
+
+    <!-- ReAct Loop Arrows -->
+    <!-- 1. Context to Model -->
+    <path d="M 120 180 L 210 120" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowContext)"/>
+    <text x="145" y="140" fill="#fbbf24" font-size="10" font-weight="600">1. Context Feed</text>
+
+    <!-- 2. Model Decision to Tool Execution -->
+    <path d="M 440 120 L 530 180" stroke="#10b981" stroke-width="2" fill="none"/>
+    <text x="475" y="140" fill="#34d399" font-size="10" font-weight="600">2. Tool Call</text>
+
+    <!-- 3. Tool Result back into Context -->
+    <path d="M 530 250 C 450 310, 200 310, 120 250" stroke="#38bdf8" stroke-width="2" fill="none"/>
+    <text x="325" y="300" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="600">3. Tool Observation Feeds Back Into Context</text>
+
+    <!-- Bottom Left: Context Management Component -->
+    <g transform="translate(20, 180)">
+      <rect width="180" height="100" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="90" y="24" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700">Context Manager</text>
+      <text x="15" y="46" fill="#cbd5e1" font-size="10">• History summarization</text>
+      <text x="15" y="64" fill="#cbd5e1" font-size="10">• ContextOffloader plugin</text>
+      <text x="15" y="82" fill="#94a3b8" font-size="9">Proactive token pruning</text>
+    </g>
+
+    <!-- Bottom Right: Tool Execution Layer -->
+    <g transform="translate(450, 180)">
+      <rect width="180" height="100" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+      <text x="90" y="24" text-anchor="middle" fill="#34d399" font-size="12" font-weight="700">Tools &amp; Capabilities</text>
+      <text x="15" y="46" fill="#cbd5e1" font-size="10">• @tool decorator</text>
+      <text x="15" y="64" fill="#cbd5e1" font-size="10">• Built-in strands_tools</text>
+      <text x="15" y="82" fill="#94a3b8" font-size="9">Auto JSON Schema via types</text>
+    </g>
+
+    <!-- Bottom Center: Sub-Agent Delegation & Lifecycle -->
+    <g transform="translate(180, 320)">
+      <rect width="290" height="65" rx="8" fill="#0f172a" stroke="#60a5fa" stroke-width="1.5"/>
+      <text x="145" y="22" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">Harness Lifecycle &amp; Multi-Agent Delegation</text>
+      <text x="145" y="40" text-anchor="middle" fill="#cbd5e1" font-size="10">Sub-agent delegation (use_agent) • Session state • Tracing</text>
+      <text x="145" y="55" text-anchor="middle" fill="#94a3b8" font-size="9">Loop terminates when model completes response without tool calls</text>
+    </g>
+  </g>
+</svg>
